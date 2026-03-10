@@ -1,0 +1,11 @@
+{
+    "type": "module",
+    "name": "@jcbhmr/text-encoder-more",
+    "version": "1.0.0",
+    "exports": {
+        ".": "./dist/index.js"
+    },
+    "devDependencies": {
+        "@types/node": "^25.4.0"
+    }
+}
