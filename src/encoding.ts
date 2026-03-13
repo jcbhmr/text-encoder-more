@@ -1,49 +1,29 @@
-/**
- * Each encoding has an associated decoder and most of them have an associated
- * encoder. Instances of decoders and encoders have a handler algorithm and
- * might also have state. A handler algorithm takes an input I/O queue and an
- * item, and returns finished, one or more items, error optionally with a code
- * point, or continue.
- */
-export interface Encoding {
-    encoder?: Encoder
+import IOQueue from "./IOQueue.ts"
+
+export default interface Encoding {
+    name: string;
+    labels: string[];
+    encoder: { new(): Encoder };
+    decoder: never;
 }
 
-type Encoder = { new(): EncoderInstance }
-
-export interface EncoderInstance {
-    handler(a: ioQueue, b: item)
+export interface HandlerError {
+    type: "HandlerError";
+    value: number | null;
 }
 
-// To get an encoding from a string label, run these steps:
-export function encodingGet(label: string) {
-    // 1. Remove any leading and trailing ASCII whitespace from label.
-    label = label.trim()
+export interface Encoder {
+    handler(input: IOQueue, item: number): "finished" | number[] | HandlerError | "continue"
+}
 
-    // 2. If label is an ASCII case-insensitive match for any of the labels listed in the table below, then return the corresponding encoding; otherwise return failure.
-    for (const [encoding, labels] of table) {
-        for (const l of labels) {
-            if (l.toLowerCase() === label.toLowerCase()) {
-                return encoding
-            }
-        }
+const encodings = new Map<string, Encoding>()
+export function register(encoding: Encoding) {
+    if (encodings.has(encoding.name)) {
+        throw new TypeError()
     }
-    return Symbol.for("failure")
+    encodings.set(encoding.name, encoding)
 }
 
-const table = new Map<unknown, string[]>([
-    [null, [
-        "unicode-1-1-utf-8",
-        "unicode11utf8",
-        "unicode20utf8",
-        "utf-8",
-        "utf8",
-        "x-unicode20utf8",
-    ]],
-    [null, [
-        "866",
-        "cp866",
-        "csibm866",
-        "ibm866"
-    ]]
-])
+export function getAnEncoding(label: string): Encoding | "failure" {
+    
+}

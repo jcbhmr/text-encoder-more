@@ -1,4 +1,11 @@
 {
   "image": "mcr.microsoft.com/devcontainers/base:debian",
-  "updateContentCommand": "curl -fsSL https://deno.land/install.sh | sh -s -- --yes"
+  "updateContentCommand": "curl -fsSL https://vite.plus | bash",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "VoidZero.vite-plus-extension-pack"
+      ]
+    }
+  }
 }
