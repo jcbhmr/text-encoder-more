@@ -1,6 +1,6 @@
 # Legacy `TextEncoder`
 
-🔎 A `TextEncoder` and `TextEncoderStream` that supports the legacy (non-UTF-8) encodings
+🔎 A `TextEncoder` that supports the legacy (non-UTF-8) encodings
 
 ## Installation
 
@@ -10,7 +10,7 @@ npm install @jcbhmr/legacy-text-encoder
 
 ## Usage
 
-This package exposes 
+This package exposes
 
 ```js
 import { LegacyTextEncoder } from "@jcbhmr/legacy-text-encoder";

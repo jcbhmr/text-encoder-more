@@ -1,0 +1,84 @@
+{
+  "name": "@jcbhmr/legacy-text-encoder",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./big5": "./dist/big5.js",
+    "./euc-jp": "./dist/euc-jp.js",
+    "./euc-kr": "./dist/euc-kr.js",
+    "./gb18030": "./dist/gb18030.js",
+    "./gbk": "./dist/gbk.js",
+    "./ibm866": "./dist/ibm866.js",
+    "./iso-2022-jp": "./dist/iso-2022-jp.js",
+    "./iso-8859-10": "./dist/iso-8859-10.js",
+    "./iso-8859-13": "./dist/iso-8859-13.js",
+    "./iso-8859-14": "./dist/iso-8859-14.js",
+    "./iso-8859-15": "./dist/iso-8859-15.js",
+    "./iso-8859-16": "./dist/iso-8859-16.js",
+    "./iso-8859-2": "./dist/iso-8859-2.js",
+    "./iso-8859-3": "./dist/iso-8859-3.js",
+    "./iso-8859-4": "./dist/iso-8859-4.js",
+    "./iso-8859-5": "./dist/iso-8859-5.js",
+    "./iso-8859-6": "./dist/iso-8859-6.js",
+    "./iso-8859-7": "./dist/iso-8859-7.js",
+    "./iso-8859-8": "./dist/iso-8859-8.js",
+    "./iso-8859-8-i": "./dist/iso-8859-8-i.js",
+    "./koi8-r": "./dist/koi8-r.js",
+    "./koi8-u": "./dist/koi8-u.js",
+    "./macintosh": "./dist/macintosh.js",
+    "./mini": "./dist/mini.js",
+    "./shift_jis": "./dist/shift_jis.js",
+    "./utf-16be": "./dist/utf-16be.js",
+    "./utf-16le": "./dist/utf-16le.js",
+    "./windows-1250": "./dist/windows-1250.js",
+    "./windows-1251": "./dist/windows-1251.js",
+    "./windows-1252": "./dist/windows-1252.js",
+    "./windows-1253": "./dist/windows-1253.js",
+    "./windows-1254": "./dist/windows-1254.js",
+    "./windows-1255": "./dist/windows-1255.js",
+    "./windows-1256": "./dist/windows-1256.js",
+    "./windows-1257": "./dist/windows-1257.js",
+    "./windows-1258": "./dist/windows-1258.js",
+    "./windows-874": "./dist/windows-874.js",
+    "./x-mac-cyrillic": "./dist/x-mac-cyrillic.js",
+    "./x-user-defined": "./dist/x-user-defined.js",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "format": "oxfmt",
+    "lint": "oxlint --type-aware --type-check",
+    "build": "tsdown",
+    "prepare": "node --run build",
+    "test": "vitest run",
+    "bench": "vitest bench --run",
+    "dev": "tsdown --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@typescript/native-preview": "^7.0.0-dev.20260326.1",
+    "oxfmt": "^0.42.0",
+    "oxlint": "^1.57.0",
+    "oxlint-tsgolint": "^0.17.4",
+    "publint": "^0.3.18",
+    "tsdown": "^0.21.5",
+    "type-fest": "^5.5.0",
+    "vite": "^8.0.3",
+    "vitest": "^4.1.2"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": "^11.12.0"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "^25.8.2"
+    }
+  }
+}
