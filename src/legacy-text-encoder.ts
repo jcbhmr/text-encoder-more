@@ -1,5 +1,5 @@
-import { failure, finished, getAnEncoding, type Encoder, type Encoding } from "./encoding.ts";
-import { endOfQueue, type IOQueueBytes } from "./ioqueue.ts";
+import { getAnEncoding, type Encoding } from "./encoding.ts";
+import type { Byte } from "./infra.ts";
 
 export interface LegacyTextEncodeOptions {
   stream?: boolean;
@@ -7,13 +7,13 @@ export interface LegacyTextEncodeOptions {
 
 export default class LegacyTextEncoder implements TextEncoder {
   #encoding: Encoding;
-  #encoder: Encoder | undefined;
+  #encoder: IterableIterator<Byte, void, void> | undefined;
   #ioQueue: IOQueueBytes;
   #doNotFlush: boolean = false;
   constructor(label: string) {
     label = `${label}`;
     const encoding = getAnEncoding(label);
-    if (encoding === failure) {
+    if (encoding == null) {
       throw new RangeError(`'${label}' is not a supported encoding label`);
     }
     this.#encoding = encoding;
@@ -35,7 +35,7 @@ export default class LegacyTextEncoder implements TextEncoder {
     const { stream: options_stream = false } = options;
     
     if (!this.#doNotFlush) {
-      this.#encoder = new this.#encoding.Encoder();
+      this.#encoder = new this.#encoding.createEncoder();
       this.#ioQueue = ImmediateIOQueueScalarValues.of(endOfQueue);
     }
     this.#doNotFlush = options_stream;
